@@ -40,7 +40,6 @@ const getCountryFlag = (country?: string): string => {
 
 interface Notification {
   id: string
-  name: string
   hascustomer: boolean
   hasCardInfo: boolean
   currentPage: string
