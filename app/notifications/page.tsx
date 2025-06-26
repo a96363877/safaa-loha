@@ -74,7 +74,7 @@ export default function NotificationsPage() {
   const [pageName, setPagename] = useState<string>("")
   const [message, setMessage] = useState<boolean>(false)
   const [selectedInfo, setSelectedInfo] = useState<"personal" | "card" | null>(null)
-  const [selectedNotification, setSelectedNotification] = useState<Notification | null>(null)
+  const [selectedNotification, setselectedNotification] = useState<Notification | null>(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -160,7 +160,7 @@ export default function NotificationsPage() {
   }
 
   const handleInfoClick = (notification: Notification, infoType: "personal" | "card") => {
-    setSelectedNotification(notification)
+    setselectedNotification(notification)
     setSelectedInfo(infoType)
   }
 // Create a separate component for user status that returns both the badge and the status
@@ -203,7 +203,7 @@ function UserStatus({ userId }: { userId: string }) {
 
   const closeDialog = () => {
     setSelectedInfo(null)
-    setSelectedNotification(null)
+    setselectedNotification(null)
   }
 
   if (isLoading) {
@@ -355,11 +355,11 @@ function UserStatus({ userId }: { userId: string }) {
               <div className="space-y-3">
                 <div className="flex justify-between items-center p-2 bg-gray-700/50 rounded">
                   <span className="text-gray-300">الاسم الكامل:</span>
-                  <span className="font-medium">{selectednotification?.customer?.name}</span>
+                  <span className="font-medium">{selectedNotification?.customer?.name}</span>
                 </div>
                 <div className="flex justify-between items-center p-2 bg-gray-700/50 rounded">
                   <span className="text-gray-300">رقم الهاتف:</span>
-                  <span className="font-medium">{selectedNotification?.phone}</span>
+                  <span className="font-medium">{selectedNotification?.customer?.phone}</span>
                 </div>
              
                 <div className="flex justify-between items-center p-2 bg-gray-700/50 rounded">
