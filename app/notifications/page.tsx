@@ -41,7 +41,7 @@ const getCountryFlag = (country?: string): string => {
 interface Notification {
   id: string
   name: string
-  hasPersonalInfo: boolean
+  hascustomer: boolean
   hasCardInfo: boolean
   currentPage: string
   createdDate: string
@@ -341,14 +341,14 @@ function UserStatus({ userId }: { userId: string }) {
               {selectedInfo === "personal" ? "تفاصيل المعلومات الشخصية" : "تفاصيل معلومات البطاقة"}
             </DialogDescription>
           </DialogHeader>
-          {selectedInfo === "personal" && selectedNotification?.personalInfo && (
+          {selectedInfo === "personal" && selectedNotification?.customer && (
             <div className="space-y-4">
               <div className="flex items-center gap-3 p-3 bg-gray-700 rounded-lg">
                 <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-lg font-bold">
-                  {selectedNotification.personalInfo.name?.charAt(0) || "N"}
+                  {selectedNotification.customer.name?.charAt(0) || "N"}
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">{selectedNotification.personalInfo.name}</h3>
+                  <h3 className="font-semibold text-lg">{selectedNotification.customer.name}</h3>
                   <p className="text-gray-400 text-sm">معلومات المستخدم</p>
                 </div>
               </div>
